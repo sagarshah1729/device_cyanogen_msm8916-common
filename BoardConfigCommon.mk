@@ -157,6 +157,7 @@ BOARD_USES_QC_TIME_SERVICES := true
 # QC PROPRIETARY
 ifneq ($(QCPATH),)
 BOARD_USES_QCNE := true
+TARGET_LDPRELOAD := libNimsWrap.so
 endif
 
 # Video
