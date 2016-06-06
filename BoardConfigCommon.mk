@@ -73,7 +73,6 @@ TARGET_USES_UNCOMPRESSED_KERNEL := true
 else
 TARGET_KERNEL_ARCH := arm
 endif
-TARGET_KERNEL_SOURCE := kernel/cyanogen/msm8916
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
