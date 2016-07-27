@@ -146,10 +146,6 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
 
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_cm
-
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
