@@ -58,11 +58,13 @@ TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
+BOARD_KERNEL_CMDLINE := android.boot.selinux=permissive console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/yu/lettuce/dt.img
+BOARD_CUSTOM_BOOTIMG_MK := device/yu/lettuce/mkbootimg.mk
 BOARD_DTBTOOL_ARGS := -2
 ifneq ($(FORCE_32_BIT),true)
 TARGET_KERNEL_ARCH := arm64
@@ -82,7 +84,7 @@ AUDIO_FEATURE_DEEP_BUFFER_RINGTONE := true
 AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
 AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 BOARD_USES_ALSA_AUDIO := true
-USE_CUSTOM_AUDIO_POLICY := 1
+USE_CUSTOM_AUDIO_POLICY := 0
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -93,7 +95,7 @@ BLUETOOTH_HCI_USE_MCT := true
 MALLOC_IMPL := dlmalloc
 
 # Crypto
-TARGET_HW_DISK_ENCRYPTION := true
+TARGET_HW_DISK_ENCRYPTION := false
 
 # Dex
 ifeq ($(HOST_OS),linux)
@@ -166,7 +168,7 @@ BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
-TARGET_USES_QCOM_WCNSS_QMI := true
+TARGET_USES_QCOM_WCNSS_QMI := false
 TARGET_USES_WCNSS_CTRL := true
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
